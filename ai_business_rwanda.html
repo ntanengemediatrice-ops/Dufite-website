@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Business Rwanda</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+    header{background:#102a43;color:white;padding:18px 16px;position:sticky;top:0;z-index:10}
+    .nav{max-width:900px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:20px;font-weight:800}
+    .tag{font-size:12px;opacity:.8}
+    .hero{background:linear-gradient(135deg,#0f766e,#164e63);color:white;padding:48px 18px}
+    .hero-inner{max-width:900px;margin:auto}
+    h1{font-size:34px;line-height:1.1;margin:0 0 14px}
+    .hero p{font-size:17px;line-height:1.6;margin-bottom:24px}
+    .btn{display:inline-block;border:0;border-radius:12px;padding:13px 17px;font-weight:700;cursor:pointer;text-decoration:none}
+    .btn-main{background:#fff;color:#0f766e}
+    .container{max-width:900px;margin:auto;padding:25px 16px}
+    h2{font-size:25px;margin:10px 0 18px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .card{background:white;border-radius:16px;padding:18px;box-shadow:0 4px 18px #102a4312}
+    .icon{font-size:28px}
+    .card h3{margin:10px 0 7px}
+    .card p{font-size:14px;line-height:1.5;color:#52606d}
+    .tool{margin-top:25px;background:white;border-radius:18px;padding:20px;box-shadow:0 4px 18px #102a4312}
+    label{display:block;font-weight:700;font-size:14px;margin:14px 0 7px}
+    input,textarea,select{width:100%;padding:12px;border:1px solid #d9e2ec;border-radius:10px;font-size:15px}
+    textarea{min-height:90px;resize:vertical}
+    .generate{background:#0f766e;color:white;width:100%;margin-top:18px}
+    .result{margin-top:18px;background:#f0fdfa;border-left:4px solid #0f766e;padding:15px;border-radius:10px;white-space:pre-wrap;line-height:1.6;display:none}
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .price{text-align:center}
+    .price strong{font-size:22px}
+    footer{background:#102a43;color:white;text-align:center;padding:25px 15px;margin-top:25px;font-size:13px}
+    @media(max-width:650px){
+      .grid,.pricing{grid-template-columns:1fr 1fr}
+      h1{font-size:29px}
+    }
+    @media(max-width:420px){
+      .grid,.pricing{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div>
+      <div class="logo">🤖 AI Business Rwanda</div>
+      <div class="tag">AI igufasha guteza imbere business</div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Koresha AI mu guteza imbere business yawe.</h1>
+    <p>Hanga amatangazo, ubutumwa bwo kwamamaza n'ibitekerezo bya business ukoresheje telefoni yawe.</p>
+    <a href="#generator" class="btn btn-main">Tangira nonaha</a>
+  </div>
+</section>
+
+<main class="container">
+  <h2>Serivisi zacu</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">📢</div>
+      <h3>Kwamamaza</h3>
+      <p>Kora ubutumwa bugufi kandi bukurura abakiriya.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🎨</div>
+      <h3>Poster</h3>
+      <p>Shaka igitekerezo cy'amagambo wakoresha kuri poster.</p>
+    </div>
+    <div class="card">
+      <div class="icon">✍️</div>
+      <h3>Andika Itangazo</h3>
+      <p>Shaka amagambo yo kwamamaza ibicuruzwa cyangwa serivisi.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>Vugana na AI</h3>
+      <p>Ushobora kubaza ibibazo bijyanye na business yawe.</p>
+    </div>
+  </div>
+
+  <section class="tool" id="generator">
+    <h2>📢 Kora itangazo rya business</h2>
+
+    <label for="business">Ubwoko bwa business</label>
+    <input id="business" placeholder="Urugero: Salon, Restaurant, Boutique">
+
+    <label for="product">Icyo ushaka kwamamaza</label>
+    <input id="product" placeholder="Urugero: Inkweto nshya">
+
+    <label for="location">Aho business iherereye</label>
+    <input id="location" placeholder="Urugero: Kirehe">
+
+    <label for="phone">Numero ya telefoni (ushaka kuyishyiramo)</label>
+    <input id="phone" placeholder="Urugero: 07XXXXXXXX">
+
+    <label for="tone">Uburyo ushaka itangazo</label>
+    <select id="tone">
+      <option>Rigufi kandi rikurura abakiriya</option>
+      <option>Rishimishije</option>
+      <option>Risa n'itangazo ry'umwuga</option>
+    </select>
+
+    <button class="btn generate" onclick="generateAd()">✨ Kora itangazo</button>
+
+    <div id="result" class="result"></div>
+  </section>
+
+  <section class="tool">
+    <h2>💰 Ibiciro by'urugero</h2>
+    <div class="pricing">
+      <div class="card price">
+        <h3>Basic</h3>
+        <strong>30,000 RWF</strong>
+        <p>Serivisi z'ibanze</p>
+      </div>
+      <div class="card price">
+        <h3>Pro</h3>
+        <strong>60,000 RWF</strong>
+        <p>Kwamamaza kenshi</p>
+      </div>
+      <div class="card price">
+        <h3>Business</h3>
+        <strong>100,000 RWF+</strong>
+        <p>Serivisi nyinshi</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>AI Business Rwanda</strong><br>
+  Turimo kubaka uburyo bworoshye bwo gufasha business gukoresha AI.
+</footer>
+
+<script>
+function generateAd(){
+  const business=document.getElementById("business").value.trim();
+  const product=document.getElementById("product").value.trim();
+  const location=document.getElementById("location").value.trim();
+  const phone=document.getElementById("phone").value.trim();
+  const tone=document.getElementById("tone").value;
+
+  if(!business || !product){
+    alert("Andikamo ubwoko bwa business n'icyo ushaka kwamamaza.");
+    return;
+  }
+
+  let extra = phone ? "\\n📞 Hamagara: " + phone : "";
+  let text =
+    "🔥 ITANGAZO RYA " + business.toUpperCase() + " 🔥\\n\\n" +
+    "Ufite ikibazo cyo kubona " + product + "? Turagufasha!\\n\\n" +
+    "✨ " + product + " iraboneka kandi dutanga serivisi nziza ku bakiriya bacu.\\n" +
+    (location ? "📍 Turasanga i " + location + ".\\n" : "") +
+    "👉 Ntucikwe n'aya mahirwe. Twandikire uyu munsi!\\n" +
+    extra +
+    "\\n\\n" +
+    "Uburyo bw'itangazo: " + tone;
+
+  const result=document.getElementById("result");
+  result.textContent=text;
+  result.style.display="block";
+  result.scrollIntoView({behavior:"smooth",block:"center"});
+}
+</script>
+
+</body>
+</html>
